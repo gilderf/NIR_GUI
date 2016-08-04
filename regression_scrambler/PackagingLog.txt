@@ -1,0 +1,24 @@
+ant:
+<ant>
+  <mkdir dir="D:\NIR Gui Project\regression_scrambler\for_redistribution" />
+  <mkdir dir="D:\NIR Gui Project\regression_scrambler\for_testing" />
+</ant>
+mcc -C -o regression_scrambler -W WinMain:regression_scrambler -T link:exe -d 'D:\NIR Gui Project\regression_scrambler\for_testing' -v 'D:\NIR Gui Project\regression_scrambler.m' 
+Compiler version: 5.1 (R2014a)
+Dependency analysis by REQUIREMENTS.
+[Warning: Adding path "D:\NIR Gui Project" to Compiler path instance.] 
+Parsing file "D:\NIR Gui Project\regression_scrambler.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "C:\Program Files\MATLAB\R2014a\toolbox\compiler\deploy\deployprint.m"
+	(Referenced from: "Compiler Command Line").
+Parsing file "C:\Program Files\MATLAB\R2014a\toolbox\compiler\deploy\printdlg.m"
+	(Referenced from: "Compiler Command Line").
+Deleting 0 temporary MEX authorization files.
+Generating file "D:\NIR Gui Project\regression_scrambler\for_testing\readme.txt".
+Packaging...
+Adding custom icon C:\Program Files\MATLAB\R2014a\toolbox\compiler\Resources\default_icon.ico to D:\NIR Gui Project\regression_scrambler\for_testing\regression_scrambler.exe.
+Attempting to embed the CTF archive into the application D:\NIR Gui Project\regression_scrambler\for_testing\regression_scrambler.exe.
+Finished embedding CTF archive. Deleting the external CTF archive.
+Creating the bundle...
+Web based installer created at D:\NIR Gui Project\regression_scrambler\for_redistribution\Regression_Scambler.exe.
+Packaging complete.
