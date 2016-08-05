@@ -53,12 +53,11 @@ RMSECV_lssvm =rmsecvC;
 RMSEP_lssvm =rmsepC;
 Error_Percent_lssvm =Error_Percent;
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_regSelection\lssvm_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_regSelection\lssvm_record.mat');
-else
-save('D:\NIR Gui Project\results_regSelection\lssvm_record.mat','R2Train_lssvm','RMSECV_lssvm','R2Test_lssvm','RMSEP_lssvm','Error_Percent_lssvm');
 end
-
+save('D:\NIR Gui Project\results_regSelection\lssvm_record.mat','R2Train_lssvm','RMSECV_lssvm','R2Test_lssvm','RMSEP_lssvm','Error_Percent_lssvm');
 
 end
 

@@ -123,11 +123,12 @@ RMSECV_bipls =rmsecvC(C);
 RMSEP_bipls =rmsepC(C);
 Error_Percent_bipls =Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_varSelection\bipls_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_varSelection\bipls_record.mat');
-else
-save('D:\NIR Gui Project\results_varSelection\bipls_record.mat','C_bipls','R2Train_bipls','RMSECV_bipls','R2Test_bipls','RMSEP_bipls','Error_Percent_bipls');
 end
+
+save('D:\NIR Gui Project\results_varSelection\bipls_record.mat','C_bipls','R2Train_bipls','RMSECV_bipls','R2Test_bipls','RMSEP_bipls','Error_Percent_bipls');
 
 end
 

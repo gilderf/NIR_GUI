@@ -97,12 +97,11 @@ RMSECV_pls =rmsecvC(C);
 RMSEP_pls =rmsepC(C);
 Error_Percent_pls =Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_regSelection\pls_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_regSelection\pls_record.mat');
-else
-save('D:\NIR Gui Project\results_regSelection\pls_record.mat','C_pls','R2Train_pls','RMSECV_pls','R2Test_pls','RMSEP_pls','Error_Percent_pls');
 end
-
+save('D:\NIR Gui Project\results_regSelection\pls_record.mat','C_pls','R2Train_pls','RMSECV_pls','R2Test_pls','RMSEP_pls','Error_Percent_pls');
 
 end
 

@@ -122,11 +122,11 @@ RMSECV_cars =rmsecvC(C);
 RMSEP_cars =rmsepC(C);
 Error_Percent_cars =Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_varSelection\cars_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_varSelection\cars_record.mat');
-else
-save('D:\NIR Gui Project\results_varSelection\cars_record.mat','C_cars','R2Train_cars','RMSECV_cars','R2Test_cars','RMSEP_cars','Error_Percent_cars');
 end
+save('D:\NIR Gui Project\results_varSelection\cars_record.mat','C_cars','R2Train_cars','RMSECV_cars','R2Test_cars','RMSEP_cars','Error_Percent_cars');
 
 end
 

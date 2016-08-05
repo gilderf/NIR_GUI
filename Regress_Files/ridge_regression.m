@@ -98,11 +98,11 @@ RMSECV_ridge =rmsecvC(C);
 RMSEP_ridge =rmsepC(C);
 Error_Percent_ridge =Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_regSelection\ridge_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_regSelection\ridge_record.mat');
-else
-save('D:\NIR Gui Project\results_regSelection\ridge_record.mat','C_ridge','R2Train_ridge','RMSECV_ridge','R2Test_ridge','RMSEP_ridge','Error_Percent_ridge');
 end
+save('D:\NIR Gui Project\results_regSelection\ridge_record.mat','C_ridge','R2Train_ridge','RMSECV_ridge','R2Test_ridge','RMSEP_ridge','Error_Percent_ridge');
 
 end
 

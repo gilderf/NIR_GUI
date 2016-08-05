@@ -95,11 +95,11 @@ RMSECV_lasso = rmsecvC(C);
 RMSEP_lasso = rmsepC(C);
 Error_Percent_lasso = Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_regSelection\lasso_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_regSelection\lasso_record.mat');
-else
-save('D:\NIR Gui Project\results_regSelection\lasso_record.mat','C_lasso','R2Train_lasso','RMSECV_lasso','R2Test_lasso','RMSEP_lasso','Error_Percent_lasso');
 end
+save('D:\NIR Gui Project\results_regSelection\lasso_record.mat','C_lasso','R2Train_lasso','RMSECV_lasso','R2Test_lasso','RMSEP_lasso','Error_Percent_lasso');
 
 end
 

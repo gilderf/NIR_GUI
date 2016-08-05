@@ -108,12 +108,12 @@ RMSECV_vcppls =rmsecvC(C);
 RMSEP_vcppls =rmsepC(C);
 Error_Percent_vcppls =Error_Percent(C);
 
+
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_varSelection\vcppls_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_varSelection\vcppls_record.mat');
-else
-save('D:\NIR Gui Project\results_varSelection\vcppls_record.mat','C_vcppls','R2Train_vcppls','RMSECV_vcppls','R2Test_vcppls','RMSEP_vcppls','Error_Percent_vcppls');
 end
-
+save('D:\NIR Gui Project\results_varSelection\vcppls_record.mat','C_vcppls','R2Train_vcppls','RMSECV_vcppls','R2Test_vcppls','RMSEP_vcppls','Error_Percent_vcppls');
 
 end
 

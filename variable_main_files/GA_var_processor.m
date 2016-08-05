@@ -158,12 +158,12 @@ RMSECV_gapls =rmsecvC(C);
 RMSEP_gapls =rmsepC(C);
 Error_Percent_gapls =Error_Percent(C);
 
+
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_varSelection\gapls_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_varSelection\gapls_record.mat');
-else
-save('D:\NIR Gui Project\results_varSelection\gapls_record.mat','C_gapls','R2Train_gapls','RMSECV_gapls','R2Test_gapls','RMSEP_gapls','Error_Percent_gapls');
 end
-
+save('D:\NIR Gui Project\results_varSelection\gapls_record.mat','C_gapls','R2Train_gapls','RMSECV_gapls','R2Test_gapls','RMSEP_gapls','Error_Percent_gapls');
 
 end
 

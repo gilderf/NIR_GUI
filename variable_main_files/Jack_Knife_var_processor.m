@@ -100,11 +100,11 @@ RMSECV_jkpls =rmsecvC(C);
 RMSEP_jkpls =rmsepC(C);
 Error_Percent_jkpls =Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_varSelection\jkpls_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_varSelection\jkpls_record.mat');
-else
-save('D:\NIR Gui Project\results_varSelection\jkpls_record.mat','C_jkpls','R2Train_jkpls','RMSECV_jkpls','R2Test_jkpls','RMSEP_jkpls','Error_Percent_jkpls');
 end
+save('D:\NIR Gui Project\results_varSelection\jkpls_record.mat','C_jkpls','R2Train_jkpls','RMSECV_jkpls','R2Test_jkpls','RMSEP_jkpls','Error_Percent_jkpls');
 
 end
 

@@ -165,11 +165,11 @@ RMSECV_pca =rmsecvC(C);
 RMSEP_pca =rmsepC(C);
 Error_Percent_pca =Error_Percent(C);
 
+%if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_regSelection\pca_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_regSelection\pca_record.mat');
-else
-save('D:\NIR Gui Project\results_regSelection\pca_record.mat','C_pca','R2Train_pca','RMSECV_pca','R2Test_pca','RMSEP_pca','Error_Percent_pca');
 end
+save('D:\NIR Gui Project\results_regSelection\pca_record.mat','C_pca','R2Train_pca','RMSECV_pca','R2Test_pca','RMSEP_pca','Error_Percent_pca');
 
 end
 
