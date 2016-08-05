@@ -16,8 +16,8 @@ function [ xtr, ytr, xtt, ytt, range ] = preprocess_nir_data( X, Y, wavelength,c
 
 
 if (continue_flag == 0)
-   % h = waitbar(0,'Please wait...','Name','Preprocessing NIR Data...');
-   h = waitbar(0);
+    % h = waitbar(0,'Please wait...','Name','Preprocessing NIR Data...');
+    h = waitbar(0);
     for kk = 1:size(X,1)
         Spectra_smooth = smooth(wavelength,X(kk,:),40,'sgolay',3);
         Spectra_smooth = Spectra_smooth';
@@ -48,14 +48,6 @@ if (continue_flag == 1 && isequal(Y,0))
     Y_complex.freq1 = Y_complex.freq1./1e6;
     [ Y ] = property_selector( Y_complex,func_prprty );
 end
-
-
-
-
-
-
-
-
 % The best test set was found to be Sample 10B, Sample 10I and Sample 5G
 % ind_1 = 529; % Sample 10B - ICRS 0
 % ind_2 = 553;
@@ -65,15 +57,18 @@ end
 % ind_6 = 280;
 
 % Wavelength indexes
+wave_start = 896;
+wave_end = 1540;
 
 if ( isequal(func_prprty{1},'Inst.Mod') == 1)
     %Only for Instant Modulus
     wave_start = 940;
     wave_end = 1340;
-else
-    %For rest of parameters
-    wave_start = 896;
-    wave_end = 1540;
+end
+if ( isequal(func_prprty{1},'Equilibrium.Mod') == 1)
+   %for equilibrium modulus
+    wave_start = 900;
+    wave_end = 1524;
 end
 
 %Uncomment for full spectrum

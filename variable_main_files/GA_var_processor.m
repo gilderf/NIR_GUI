@@ -17,7 +17,7 @@ plot(d);
 
 %% TEST begins
 A = 6;
-[a,b] = sort(abs(d),'descend');
+%[a,b] = sort(abs(d),'descend');
 
 KFold = 10;
 Indices = crossvalind('Kfold', numel(y_train), KFold);
