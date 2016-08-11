@@ -31,7 +31,7 @@ end
 
 if exist('D:\NIR Gui Project\results_regSelection\pca_record.mat','file') == 2
     load pca_record.mat
-    T3 = [{'pca'},C_pca, R2Train_pca, RMSECV_pca, R2Test_pca, RMSEP_pca, Error_Percent_pca];
+    T3 = [{'pcr'},C_pca, R2Train_pca, RMSECV_pca, R2Test_pca, RMSEP_pca, Error_Percent_pca];
     xlswrite(filename,T3,1,'A4');
 end
 
