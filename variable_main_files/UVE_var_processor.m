@@ -1,4 +1,4 @@
-function [ wavelength_final  ] = UVE_var_processor( x_train, y_train, x_test , y_test )
+function [ wavelength_final  ] = UVE_var_processor( x_train, y_train, x_test , y_test , func_param )
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -160,11 +160,24 @@ RMSECV_uvepls =rmsecvC(C);
 RMSEP_uvepls =rmsepC(C);
 Error_Percent_uvepls =Error_Percent(C);
 
+%title_to_display = strcat('LASSO Regression : ',func_param);
+%suptitle(title_to_display)
+
 %if there is a previous copy of the file delete it and make a new one
 if exist('D:\NIR Gui Project\results_varSelection\uvepls_record.mat','file') == 2
 delete('D:\NIR Gui Project\results_varSelection\uvepls_record.mat');
 end
 save('D:\NIR Gui Project\results_varSelection\uvepls_record.mat','C_uvepls','R2Train_uvepls','RMSECV_uvepls','R2Test_uvepls','RMSEP_uvepls','Error_Percent_uvepls');
+
+if exist('UVE_complex','file') == 2
+delete('UVE_complex.mat');
+end
+save('UVE_complex.mat','UVE');
+
+if exist('uve_selected_var.mat','file') == 2
+delete('uve_selected_var.mat');
+end
+save('uve_selected_var.mat','wavelength_final');
 
 end
 

@@ -1,4 +1,4 @@
-function [ wavelength_final ] = variable_selection( x_train,y_train,x_test,y_test,var_sel_mthd,range )
+function [ wavelength_final ] = variable_selection( x_train,y_train,x_test,y_test,var_sel_mthd,range,func_param )
 %UNTITLED Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -6,7 +6,7 @@ var_sel_mthd = var_sel_mthd{1};
 
 switch var_sel_mthd
     case 'UVE'
-        [ wavelength_final  ] = UVE_var_processor( x_train, y_train, x_test ,y_test);
+        [ wavelength_final  ] = UVE_var_processor( x_train, y_train, x_test ,y_test, func_param);
     case 'CARS'
         [ wavelength_final  ] = CARS_var_processor( x_train, y_train, x_test ,y_test);
     case 'VCP'

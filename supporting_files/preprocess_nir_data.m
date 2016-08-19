@@ -28,9 +28,25 @@ if (continue_flag == 0)
         Spectra_der2(kk,:) = filter(ones(1,wind)/wind,1,Spectra_der);
         waitbar(kk / size(X,1));
     end
+     save('Spectra_der2.mat','Spectra_der2');
+   % Extra processing for double Savits-Golay, for figure plotting in
+   % paper1, remove while analysing or add option in GUI
+        for kk = 1:size(Spectra_der2,1)
+            Spectra_smooth = smooth(wavelength(1,1:1998),Spectra_der2(kk,:),40,'sgolay',3);
+            Spectra_smooth = Spectra_smooth';
+            for ll = 1:size(Spectra_smooth,2)-2
+                Spectra_der(:,ll) = (Spectra_smooth(:,ll+2)-2*Spectra_smooth(:,ll+1)+Spectra_smooth(:,ll))./(((wavelength(ll+2)-wavelength(ll))/2).^2);
+            end
+            wind = 10; % Normal 10
+            Spectra_der22(kk,:) = filter(ones(1,wind)/wind,1,Spectra_der);
+            %waitbar(kk / size(Spectra_der2,1));
+        end
+    %end
     close(h)
     clear Spectra_smooth kk ll  der Spectra_der
-    save('Spectra_der2.mat','Spectra_der2');
+   
+    %only for Diagram not used in spectral analysis
+    save('Spectra_der22.mat','Spectra_der22');
 end
 
 if (continue_flag == 1 && isequal(Y,0))
@@ -66,7 +82,7 @@ if ( isequal(func_prprty{1},'Inst.Mod') == 1)
     wave_end = 1340;
 end
 if ( isequal(func_prprty{1},'Equilibrium.Mod') == 1)
-   %for equilibrium modulus
+    %for equilibrium modulus
     wave_start = 900;
     wave_end = 1524;
 end
@@ -76,9 +92,16 @@ end
 %     wave_end = 1998;
 range = wave_start : wave_end ;
 
+% if exist('Range','file') == 2
+% delete('Range.mat');
+% end
+% save('Range.mat','wave_start','wave_end');
+
 %% Seperating the data into training and testing data.
 % In this case, lets use second derivative spectra (we could use the
 % original spectra without preprocessing as well)
+% Spectra_der2 = load('Spectra_der2.mat');
+% X = Spectra_der2.Spectra_der2(:,wave_start:wave_end);
 Spectra_der2 = load('Spectra_der2.mat');
 X = Spectra_der2.Spectra_der2(:,wave_start:wave_end);
 x_train =[X(1:260,:) ; X(281:528,:) ; X(554:653,:) ; X(679:869,:)];

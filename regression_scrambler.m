@@ -22,7 +22,7 @@ function varargout = regression_scrambler(varargin)
 
 % Edit the above text to modify the response to help regression_scrambler
 
-% Last Modified by GUIDE v2.5 03-Aug-2016 16:17:40
+% Last Modified by GUIDE v2.5 19-Aug-2016 11:44:36
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -197,7 +197,7 @@ handles.var_sel_processing = sel_items ;
 
 if (isequal(sel_items{1},'None')== 0)
     set(handles.reg_sel_mtd,'visible','off');
-    [ wavelength_final ] = variable_selection( handles.data.x_train,handles.data.y_train,handles.data.x_test,handles.data.y_test,handles.var_sel_processing,handles.range );
+    [ wavelength_final ] = variable_selection( handles.data.x_train,handles.data.y_train,handles.data.x_test,handles.data.y_test,handles.var_sel_processing,handles.range,handles.func_prop_sel );
     set(handles.reg_sel_mtd,'visible','on');
     handles.var_wavelength = wavelength_final;
     handles.data.x_train_var_sel = handles.data.x_train(:,wavelength_final);
@@ -411,3 +411,11 @@ function clean_reg_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 delete('D:\NIR Gui Project\results_regSelection\*.mat');
+
+
+% --- Executes on button press in mc_uve_pls_plot.
+function mc_uve_pls_plot_Callback(hObject, eventdata, handles)
+% hObject    handle to mc_uve_pls_plot (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+figurine (handles.func_prop_sel) ;
