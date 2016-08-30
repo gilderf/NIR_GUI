@@ -66,6 +66,7 @@ title(num2str(corr(y_train,yfit_train)))
 
 mcuve_vars = b(1: var_no);
 wavelength_final = b(1: var_no);
+cutoff_reliabilty_index = a(var_no);
 
 %[XL,~,Xs,~,betaPLS,PctVar,msep, stats]= plsregress(x_train(:,mcuve_vars),y_train,A);
 ncompmax = 15;
@@ -174,10 +175,10 @@ delete('UVE_complex.mat');
 end
 save('UVE_complex.mat','UVE');
 
-if exist('uve_selected_var.mat','file') == 2
-delete('uve_selected_var.mat');
+if exist('uve_selection.mat','file') == 2
+delete('uve_selection.mat');
 end
-save('uve_selected_var.mat','wavelength_final');
+save('uve_selection.mat','wavelength_final','cutoff_reliabilty_index');
 
 end
 

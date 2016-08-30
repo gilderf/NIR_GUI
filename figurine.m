@@ -4,24 +4,25 @@ function [  ] = figurine( func_prop_sel )
 %ccc;
 
 load('Data_average_spectrums.mat');
-load('Spectra_der22.mat');
+load('Spectra_der2.mat');
 load('UVE_complex.mat');
-load('uve_selected_var.mat');
+load('uve_selection.mat');
 %load('Range.mat');
 %'wave_start','wave_end'
 %close all;
 %clc;
 s = abs(UVE.RI);
-s1 = s - 1.24 ;
+% set the limit automatically
+s1 = s - cutoff_reliabilty_index ;
 ind = find(s1 < 0);
-s1 = s1+1.2;
+s1 = s1 + cutoff_reliabilty_index;
 s1 (ind) = 0;
 figure
 subplot(5,1,5)
 s = abs(UVE.RI);
-s1 = s - 1.24 ;
+s1 = s - cutoff_reliabilty_index ;
 ind = find(s1 < 0);
-s1 = s1+1.2;
+s1 = s1 + cutoff_reliabilty_index;
 s1 (ind) = 0;
 ind2 = find(s1 ~= 0);
 s1(ind2) = 1;
@@ -35,9 +36,9 @@ xlabel('MC-UVE-PLS selection band','fontWeight','bold')
 set(gca,'YTickLabel',{' '})
 subplot(5,1,[3 4])
 x1 = ( 800 : 1600 );
-y1 = Spectra_der22(90,800 : 1600) ;
-y2 = Spectra_der22(70,800 : 1600) ;
-y3 = Spectra_der22(184,800 : 1600) ;
+y1 = Spectra_der2(90,800 : 1600) ;
+y2 = Spectra_der2(70,800 : 1600) ;
+y3 = Spectra_der2(184,800 : 1600) ;
 %plot((800 : 1600),Spectra_der22(106,800:1600),'DisplayName','Spectra_der22')
 plot(x1,y1,x1,y2,x1,y3,'LineWidth',0.8);
 ylabel('Double Savits-Golay 2nd Der.','fontWeight','bold')

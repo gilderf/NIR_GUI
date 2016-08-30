@@ -31,22 +31,22 @@ if (continue_flag == 0)
      save('Spectra_der2.mat','Spectra_der2');
    % Extra processing for double Savits-Golay, for figure plotting in
    % paper1, remove while analysing or add option in GUI
-        for kk = 1:size(Spectra_der2,1)
-            Spectra_smooth = smooth(wavelength(1,1:1998),Spectra_der2(kk,:),40,'sgolay',3);
-            Spectra_smooth = Spectra_smooth';
-            for ll = 1:size(Spectra_smooth,2)-2
-                Spectra_der(:,ll) = (Spectra_smooth(:,ll+2)-2*Spectra_smooth(:,ll+1)+Spectra_smooth(:,ll))./(((wavelength(ll+2)-wavelength(ll))/2).^2);
-            end
-            wind = 10; % Normal 10
-            Spectra_der22(kk,:) = filter(ones(1,wind)/wind,1,Spectra_der);
-            %waitbar(kk / size(Spectra_der2,1));
-        end
+%         for kk = 1:size(Spectra_der2,1)
+%             Spectra_smooth = smooth(wavelength(1,1:1998),Spectra_der2(kk,:),40,'sgolay',3);
+%             Spectra_smooth = Spectra_smooth';
+%             for ll = 1:size(Spectra_smooth,2)-2
+%                 Spectra_der(:,ll) = (Spectra_smooth(:,ll+2)-2*Spectra_smooth(:,ll+1)+Spectra_smooth(:,ll))./(((wavelength(ll+2)-wavelength(ll))/2).^2);
+%             end
+%             wind = 10; % Normal 10
+%             Spectra_der22(kk,:) = filter(ones(1,wind)/wind,1,Spectra_der);
+%             %waitbar(kk / size(Spectra_der2,1));
+%         end
     %end
     close(h)
     clear Spectra_smooth kk ll  der Spectra_der
    
     %only for Diagram not used in spectral analysis
-    save('Spectra_der22.mat','Spectra_der22');
+    %save('Spectra_der22.mat','Spectra_der22');
 end
 
 if (continue_flag == 1 && isequal(Y,0))

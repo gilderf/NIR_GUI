@@ -418,4 +418,5 @@ function mc_uve_pls_plot_Callback(hObject, eventdata, handles)
 % hObject    handle to mc_uve_pls_plot (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
-figurine (handles.func_prop_sel) ;
+%figurine (handles.func_prop_sel) ;
+deleteok_v1
