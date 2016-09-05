@@ -22,7 +22,7 @@ function varargout = regression_scrambler(varargin)
 
 % Edit the above text to modify the response to help regression_scrambler
 
-% Last Modified by GUIDE v2.5 19-Aug-2016 11:44:36
+% Last Modified by GUIDE v2.5 05-Sep-2016 07:11:21
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -82,6 +82,7 @@ addpath variable_main_files;
 addpath Variable_Sel_supporting;
 addpath results_regSelection;
 addpath results_varSelection;
+addpath Figure_scripts;
 
 %For Variable selection and Regression Mtd
 handles.var_sel_processing = 'None';
@@ -140,14 +141,14 @@ set(handles.preprocess,'visible','off');
 X = handles.X ;
 Y = handles.Y ;
 if (get(handles.dependency_data,'value') == 1)
-interim1 = cov(handles.Y);
-interim2 = cov(handles.Y) * tapering(size(handles.Y,1),1);
-
-Y = inv(sqrt(interim2)) * handles.Y;
-X = inv(sqrt(interim2)) * handles.X;
-
-end
+    interim1 = cov(handles.Y);
+    interim2 = cov(handles.Y) * tapering(size(handles.Y,1),1);
     
+    Y = inv(sqrt(interim2)) * handles.Y;
+    X = inv(sqrt(interim2)) * handles.X;
+    
+end
+
 
 [handles.data.x_train,handles.data.y_train...
     ,handles.data.x_test,handles.data.y_test, handles.range] = preprocess_nir_data( X , Y , handles.wavelength, handles.continue_flag, handles.func_prop_sel);
@@ -413,10 +414,23 @@ function clean_reg_Callback(hObject, eventdata, handles)
 delete('D:\NIR Gui Project\results_regSelection\*.mat');
 
 
-% --- Executes on button press in mc_uve_pls_plot.
-function mc_uve_pls_plot_Callback(hObject, eventdata, handles)
-% hObject    handle to mc_uve_pls_plot (see GCBO)
+% --- Executes on button press in pls_plot.
+function pls_plot_Callback(hObject, eventdata, handles)
+% hObject    handle to pls_plot (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 %figurine (handles.func_prop_sel) ;
-deleteok_v1
+
+selected_property = handles.func_prop_sel ;
+switch selected_property{1}
+    case 'Cart. Thickness'
+        plot_thickness ;
+    case 'Inst.Mod'
+        plot_instant_modulus ;
+    case 'Dynamic.Mod'
+        plot_dynamic_modulus ;
+    case 'Equilibrium.Mod'
+        plot_equilibrium_modulus ;
+    otherwise
+        warning('no Regression selected')
+end
